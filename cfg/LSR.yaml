@@ -1,0 +1,64 @@
+networks:
+  params:
+    m_type: resnet18
+    num_classes: 29
+    num_head: 4
+  type: ResNet_MH
+num_sampler: 1
+output_dir: null
+phase: train
+logger_opt:
+  print_iter: 100
+algorithm_opt:
+  entropy_weight: 1.0
+  warmup_epoch: 0
+  weight_lr:
+  - 1000
+  - 50
+sampler: default
+seed:
+  dataset: 123
+  train: 0
+dataset:
+  data_path: ./_coco/ALT/coco_cbl
+  name: coco_imbatt_balcls
+  rand_aug: true
+  rgb_mean:
+  - 0.473
+  - 0.429
+  - 0.37
+  rgb_std:
+  - 0.277
+  - 0.268
+  - 0.274
+  RandomResizedCrop: 
+  - 112
+  - 0.2
+  - 1.0
+  test_Resize: 128
+  test_CenterCrop: 112
+testing_opt:
+  type: baseline
+training_opt:
+  batch_size: 256
+  data_workers: 4
+  loss: MHLoss
+  loss_params:
+    diversity_loss_type: l2
+    diversity_temperature: 1.0
+    diversity_weight: -1.0
+  num_epochs: 200
+  optim_params:
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0005
+  optimizer: SGD
+  scheduler: cosine
+  scheduler_params:
+    endlr: 0.0
+    gamma: 0.1
+    milestones:
+    - 120
+    - 160
+    step_size: 35
+  type: LSR
