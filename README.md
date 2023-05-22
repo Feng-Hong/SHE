@@ -1,6 +1,6 @@
 # Latent Subpopulation Rebalancing
 
-This is the source code of LSR (NeurIPS 2023 Submission). Please do not distribute.
+This is the source code of LSR (NeurIPS 2023 Submission) for review purpose only. Please do not distribute.
 
 ## Environment
 
