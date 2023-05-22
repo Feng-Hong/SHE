@@ -2,13 +2,7 @@ import random
 import numpy as np
 import torch
 import torch.utils.data as data
-# import torch.distributed as dist
-
-# import torchvision.transforms as transforms
-# from randaugment import RandAugment
-# import copy
-
-from .coco import coco_imbatt_balcls, coco_imbatt_balcls_contrast, coco_imbatt_balcls_transform
+from .coco import coco_imbatt_balcls, coco_imbatt_balcls_transform
 from .samplers import DistributionSampler
 
 def get_loader(config, phase, logger):
@@ -70,8 +64,5 @@ def get_loader(config, phase, logger):
             ))
         if len(loader) == 1:
             loader = loader[0]
-    
-    # data loader
-    
 
     return loader

@@ -12,8 +12,6 @@ import torch.multiprocessing as mp
 import torch.distributed as dist
 import train_funs 
 from utils.general import random_str, get_date, re_nest_configs
-# import os
-# os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
 
 WORLD_SIZE = 1
 MULTIPROCESSING_DISTRIBUTED = True
@@ -62,20 +60,6 @@ def main():
     # fix random seed
     if args.seed is None:
         args.seed = 25
-    '''
-    print('=====> Using fixed random seed: ' + str(args.seed))
-    # random.seed(args.seed)
-    # torch.manual_seed(args.seed)
-    # torch.cuda.manual_seed(args.seed)
-    # torch.cuda.manual_seed_all(args.seed)
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    torch.cuda.manual_seed(args.seed)
-    torch.cuda.manual_seed_all(args.seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    '''
     # ============================================================================
     # update config file
 
@@ -87,15 +71,6 @@ def main():
         config['log_file'] = args.log_file
     if args.port is not None:
         config['port'] = args.port
-    #output_dir will be updated later
-
-    # # wandb init
-    # print('wandb init')
-    # run = wandb.init(config=config,project="group_imbalance")
-    # # for nested config, convert a.b.c: to a: b: c:
-    # re_nest_configs(run.config)
-    # wandb_config = { k: v for k, v in run.config.items()}
-    # wandb.define_metric('acc', 'max')
 
     # ============================================================================
     # init logger
@@ -175,12 +150,9 @@ def main_worker(gpu, ngpus_per_node, config, logger):
         logger.info("Use GPU: {} for training".format(gpu))
     
     if gpu % ngpus_per_node == 0:
-        # wandb init
         print('wandb init')
         run = wandb.init(config=config,project="group_imbalance")
-        # # for nested config, convert a.b.c: to a: b: c:
         re_nest_configs(run.config)
-        # wandb_config = { k: v for k, v in run.config.items()}
         wandb.define_metric('acc', 'max')
         run.name = config['dataset']['name'] + '_' + config['output_dir'].split('/')[-2]
 

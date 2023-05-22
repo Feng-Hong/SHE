@@ -125,27 +125,6 @@ class coco_imbatt_balcls_transform():
     def __call__(self, img):
         return self.transform(img)
     
-
-class coco_imbatt_balcls_contrast(coco_imbatt_balcls):
-    def __init__(self, root, phase, logger, transform):
-        super(coco_imbatt_balcls_contrast, self).__init__(root, phase, logger, transform)
-    
-    def __getitem__(self, index):
-        img_path = self.img_paths[index]
-        label = self.labels[index]
-        attribute = self.attributes[index]
-        frequency = self.frequencies[index]
-        
-
-        img = Image.open(img_path).convert('RGB')
-        transform_w, transform_s = self.transform[0], self.transform[1]
-        img_w = transform_w(img)
-        img_s = transform_s(img)
-
-        if self.phase == 'train':
-            return img_w, img_s, label, attribute, index
-        else:
-            return img_w, label
         
 def visualization(original_tensor,saved_file = "_cifar/example.png"):
     from torchvision import transforms

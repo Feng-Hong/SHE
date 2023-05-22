@@ -45,16 +45,12 @@ class train():
         # create dataloader
         self.train_loader = get_loader(config, 'train', logger)
         self.num_samples = len(self.train_loader.dataset)
-        # self.weight_per_sample = torch.ones((self.num_samples, self.num_head), dtype=torch.float)
-        # self.weight_per_sample = self.weight_per_sample / self.num_head
-        # self.weight_per_sample = nn.Parameter(torch.ones((self.num_samples, self.num_head), dtype=torch.float), requires_grad=True)
         self.weight_per_sample = nn.ParameterList([nn.Parameter(torch.zeros(self.num_head, dtype=torch.float), requires_grad=True) for i in range(self.num_samples)]).cuda()
         self.gt_per_sample = torch.zeros(self.num_samples, dtype=torch.long).cuda()
         self.gt_per_sample = self.gt_per_sample - 1
         self.update_gt = True
 
         self.resample_weight = torch.ones(self.num_samples, dtype=torch.float)
-        # self.weight_optim = torch.optim.SGD([self.weight_per_sample], lr=0.1, momentum=0.9, weight_decay=0.0005)
         self.weight_optim = torch.optim.SGD(self.weight_per_sample, lr=self.config['algorithm_opt']['weight_lr'][0], momentum=0.9, weight_decay=0.0005)
         self.weight_optim_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.weight_optim, T_max=200, eta_min=self.config['algorithm_opt']['weight_lr'][1])
         # ============================================================================
@@ -84,7 +80,7 @@ class train():
         for i in range(self.num_classes):
             sum_weight_per_head_per_class[i] = weight[self.gt_per_sample == i].sum(dim=0) + 1e-8
         self.sum_weight_per_head_per_class = sum_weight_per_head_per_class
-        sum_weight_per_head_per_class_head_norm = sum_weight_per_head_per_class / sum_weight_per_head_per_class.sum(dim=1, keepdim=True)# (num_classes, num_head), norm to 1 for each head
+        sum_weight_per_head_per_class_head_norm = sum_weight_per_head_per_class / sum_weight_per_head_per_class.sum(dim=1, keepdim=True)
         # entropy
         entropy_per_head = -torch.sum(sum_weight_per_head_per_class_head_norm * torch.log(sum_weight_per_head_per_class_head_norm + 1e-8), dim=0) # (num_head)
         # weighted sum

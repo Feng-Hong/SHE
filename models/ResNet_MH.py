@@ -22,10 +22,6 @@ class Classifier_multi_head(nn.Module):
         x_list = torch.split(x, self.head_dim, dim=1)
         w_list = torch.split(self.weight, self.head_dim, dim=1)
         out = []
-
-        # for x_i, w_i in zip(x_list, w_list):
-        #     y_i = torch.mm(x_i, w_i.t())
-        #     out.append(y_i)
         for i in range(self.num_head):
             out.append(torch.mm(x_list[i], w_list[i].t()))
             
