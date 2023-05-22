@@ -39,6 +39,10 @@ CUDA_VISIBLE_DEVICES=0 python main.py --cfg cfg/LSR.yaml --phase train --seed 0 
 
 - Add your model to ```./models``` and import the model in ```./models/__init__.py```.
 
+**Implement Your Own Method**
+
+- Add your method to ```./train_funs``` and import the method in ```./train_funs/__init__.py```.
+
 **Implement Other Datasets**
 
 - Add raw data to ```./[_data_name]```.
