@@ -14,7 +14,7 @@ The project is tested under the following environment settings:
 - Numpy (1.21.2) 
 
 ## Content
-- ```./utils```: logger, loss functions, and misc
+- ```./utils```: logger, optimizers, loss functions, and misc
 - ```./models```: backbone models
 - ```./data```: datasets and dataloaders
 - ```./cfg```: config files
@@ -37,7 +37,7 @@ CUDA_VISIBLE_DEVICES=0 python main.py --cfg cfg/LSR.yaml --phase train --seed 0 
 
 **Implement Your Own Model**
 
-- Add your model to ```./models``` and load the model in ```./models/__init__.py```.
+- Add your model to ```./models``` and import the model in ```./models/__init__.py```.
 
 **Implement Other Datasets**
 
