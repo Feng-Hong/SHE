@@ -6,7 +6,7 @@ This is the source code of LSR (NeurIPS 2023 Submission) for review purposes onl
 
 The project is tested under the following environment settings:
 - OS: Ubuntu 18.04.5
-- GPU: NVIDIA GeForce RTX 3090
+- GPU: NVIDIA GeForce RTX 3090s
 - Python: 3.7.10
 - PyTorch: 1.13.1
 - Torchvision: 0.8.2
