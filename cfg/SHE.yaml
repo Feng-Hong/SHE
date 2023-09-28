@@ -61,4 +61,4 @@ training_opt:
     - 120
     - 160
     step_size: 35
-  type: LSR
+  type: SHE

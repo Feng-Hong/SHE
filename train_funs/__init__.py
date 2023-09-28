@@ -1,1 +1,1 @@
-from .LSR import train as LSR
+from .SHE import train as SHE

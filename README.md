@@ -1,6 +1,6 @@
-# Latent Subpopulation Rebalancing
+# Scatter and HarmonizE (SHE)
 
-This is the source code of LSR (NeurIPS 2023 Submission) for review purposes only. Please do not distribute.
+This is the source code of SHE (ICLR 2024 Submission) for review purposes only. Please do not distribute.
 
 ## Environment
 
@@ -25,12 +25,12 @@ The project is tested under the following environment settings:
 
 ## Usage
 
-**Run LSR on COCO**
+**Run SHE on COCO**
 
 ```shell
 # COCO
 PORT=$[$RANDOM + 10000]
-CUDA_VISIBLE_DEVICES=0 python main.py --cfg cfg/LSR.yaml --phase train --seed 0 --port $PORT
+CUDA_VISIBLE_DEVICES=0 python main.py --cfg cfg/SHE.yaml --phase train --seed 0 --port $PORT
 ```
 
 ## Extensions
