@@ -73,3 +73,6 @@ CUDA_VISIBLE_DEVICES=0 python main.py --cfg cfg/SHE.yaml --phase train --seed 0 
 - Add raw data to ```./[_data_name]```.
 - Create subpopulation-imabalnced version of the dataset in ```./data```.
 - Create dataloader in ```./data/dataloader.py```.
+
+## Contact
+If you have any problem with this code, please feel free to contact **feng.hong@sjtu.edu.cn**.
