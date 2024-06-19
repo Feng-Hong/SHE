@@ -1,6 +1,31 @@
-# Scatter and HarmonizE (SHE)
+<h1 align="center">On Harmonizing Implicit Subpopulations</h1>
 
-This is the source code of SHE (ICLR 2024 Submission) for review purposes only. Please do not distribute.
+<p align="center">
+    <!-- <a href="https://arxiv.org/abs/2406.04872"><img src="https://img.shields.io/badge/arXiv-2406.04872-b31b1b.svg" alt="Paper"></a> -->
+    <a href="https://openreview.net/pdf?id=3GurO0kRue"><img src="https://img.shields.io/badge/OpenReview-ICLR'24-blue" alt="Paper"></a>
+    <a href="https://github.com/MediaBrain-SJTU/SHE"><img src="https://img.shields.io/badge/Github-RECORDS-brightgreen?logo=github" alt="Github"></a>
+    <!-- <a href="https://iclr.cc/media/iclr-2023/Slides/11305.pdf"> <img src="https://img.shields.io/badge/Slides (5 min)-grey?&logo=MicrosoftPowerPoint&logoColor=white" alt="Slides"></a> -->
+    <a href="https://iclr.cc/media/PosterPDFs/ICLR%202024/19522.png?t=1715875121.2257736"> <img src="https://img.shields.io/badge/Poster-grey?logo=airplayvideo&logoColor=white" alt="Poster"></a>
+</p>
+
+by Feng Hong, Jiangchao Yao, Yueming Lyu, Zhihan Zhou, Ivor Tsang, Ya Zhang, and Yanfeng Wang at SJTU, Shanghai AI Lab, A*STAR, and NTU.
+
+International Conference on Learning Representations (ICLR), 2024.
+
+This repository is the official Pytorch implementation of SHE.
+
+## Citation
+
+If you find our work inspiring or use our codebase in your research, please consider giving a star ⭐ and a citation.
+```
+@inproceedings{
+hong2024on,
+title={On Harmonizing Implicit Subpopulations},
+author={Feng Hong and Jiangchao Yao and Yueming Lyu and Zhihan Zhou and Ivor Tsang and Ya Zhang and Yanfeng Wang},
+booktitle={ICLR},
+year={2024}
+}
+```
 
 ## Environment
 
