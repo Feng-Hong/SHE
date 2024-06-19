@@ -48,7 +48,7 @@ The project is tested under the following environment settings:
 - ```./test_funs```: test functions
 - ```main.py```: main function
 
-## Usage
+## Run
 
 **Run SHE on COCO**
 
